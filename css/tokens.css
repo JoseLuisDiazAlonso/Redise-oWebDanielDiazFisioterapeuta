@@ -1,0 +1,134 @@
+/*Declaramos las fuentes que usaremos para el texto normal y para los titulos*/
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/inter-latin-opsz-normal.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*En este apartado que escogeremos los titulos pondremos un font-weight de 800*/
+
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("../fonts/plus-jakarta-sans-latin-ext-wght-normal.woff2") format("woff2");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*Estilos reutilizables*/
+
+:root {
+    --color-brand: #11bcab; /*Turquesa marca-acentos*/
+    --color-brand-deep: #0B7F74; /*Botones y enlaces*/
+    --color-night: #0A4F49; /*Verde noche-bloques oscduros y hover del boton*/
+    --color-mint: #E7F7F5; /*Menta-Para fondos de iconos y etiquetas*/
+    --color-ink: #14302E; /*Tinta-texto principal y fondo del pie*/
+    --color-muted: #5B6F6D; /*Texto Secundario*/
+
+    /*Fuentes*/
+
+    --font-heading: "Plus Jakarta Sans", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, sans-serif;
+
+    /*Fondos y bordes*/
+
+    --color-white: #ffffff;
+    --color-soft: #f4faf9; /*Fondos de secciones alternas*/
+    --color-line: #dcebe9; /*Bordes y separadores*/
+
+    /*Radios*/
+
+    --radius-sm: 8px; /*Para iconos pequeños*/
+    --radius-md: 12px; /*Tarjetas flotantes*/
+    --radius-lg: 18px; /*Tarjetas y bloques*/
+    --radius-pill: 999px; /*Botnes y Sellos*/
+    --radius-circle: 50%; /*Circulo de icono*/
+
+    /*Sombras*/
+
+    --shadow-sm: 0 4px 12px rgba(10, 79, 73, 0.06); /*Boton en Hover*/
+    --shadow: 0 10px 30px rgba(10, 79, 73, .08); /*Tarjetas en reposo*/
+    --shadow-hover: 0 18px 40px rgba(10, 79, 73, .14) /*Tarjetas al pasar el raton y tarjetas flotantes*/
+
+    /*Tipologia*/
+
+    --font-size-xs: 0.75rem; /*12px-Para textos muy pequeños*/
+    --font-size-eyebrow: 0.8125rem; /*13px-antetitulos en mayusculas*/
+    --font-size-sm: 0.875rem; /*Para Textos de tarjeta*/
+    --font-size-btn: 0.9375rem; /*15px-botones*/
+    --font-size-base: 1rem; /*16px-Texto normal*/
+    --font-size-lead: 1.0625rem; /*17px-subtitulos de seccion*/
+    --font-size-h3: 1.125rem; /*Titulos de tarjetas*/
+    --font-size-h2: clamp(1.75rem, 3.4vw, 2.5rem); /*28px-40px: titulos de seccion*/
+    --font-size-h1: clamp(2.25rem, 5vw, 3.5rem); /*36px-56px-titular de portada*/
+
+    /*Pesos*/
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+
+    /*Interlineado*/
+
+    --line-height-tight: 1.2; /*Titulos*/
+    --line-height-base: 1.65; /*Parrafos*/
+
+    /*Espaciado entre letras*/
+
+    --letter-spacing-tight: -0.01em; /*titulos*/
+    --letter-spacing-wide: 0.12em; /*Antetitulos en Mayusculas*/
+
+    /*Otros espaciados*/
+
+    --space-1: 0.25rem; /*4px*/
+    --space-2: 0.5rem; /*8px*/
+    --space-3: 0.75rem; /*12px*/
+    --sapace-4: 1rem; /*16px*/
+    --space-5: 1.5rem; /*24px*/
+    --space-6: 2rem; /*32px*/
+    --space-7: 3rem; /*48px*/
+    --space-8: 4rem; /*64px*/
+    --space-9: 6rem; /*96px*/
+
+    /*Layout*/
+
+    --container-max: 1140px;
+    --container-gutter: 16px; /*Margen lateral en móvil*/
+    --section-padding: var(--space-9); /*96px arriba y abajo*/
+    --header-height: 76px;
+
+    /*Animaciones*/
+
+    --transition-fast: 0.2s ease;
+    --transition-slow: 0.7s ease;
+
+    /*Capas (z-index)*/
+
+    --z-header: 100;
+    --z-whatsapp: 90;
+    --z-cookies: 200;
+
+    /*Ajustes para pantallas pequeñas*/
+    
+    @media (max-width: 960px) {
+        :root {
+            --section-padding: 4.5rem; /*72px*/
+        }
+    }
+
+    /*Eliminar animaciones para quien lo pide en su sistema*/
+
+    @media (prefers-reduced-motion: reduce) {
+        :root {
+            --transition-fast: 0s;
+            --transition-slow: 0s;
+        }
+    }
+
+
+}
