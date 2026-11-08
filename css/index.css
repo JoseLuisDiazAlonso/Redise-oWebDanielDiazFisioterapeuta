@@ -1,0 +1,287 @@
+/*Base*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--color-ink);
+    margin: 0;
+}
+
+/*Header móvil*/
+
+/* Cabecera fija arriba, blanca translúcida con desenfoque */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-header);
+    background-color: rgba(255, 255, 255, 0.88);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--color-line);
+}
+
+.container-header-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--header-height);
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-gutter);
+}
+
+/*marca-login y nombre*/
+
+.title-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex: 1;            /* ocupa el espacio libre y empuja el menú a la derecha */
+    min-width: 0;       /* permite recortar el texto si no cabe */
+    color: inherit;
+    text-decoration: none;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: var(--radius-circle);
+    background-color: var(--color-mint);
+    box-shadow: 0 0 0 3px var(--color-mint), var(--shadow-sm); /* aro menta */
+}
+
+.title-subgroup {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-extrabold);
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.subtext {
+    margin: 2px 0 0;
+    font-size: 0.6875rem; /* 11px */
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.3;
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    color: var(--color-brand-deep);
+    white-space: nowrap;
+}
+
+/* ---------- Navegación ---------- */
+
+/* Botón hamburguesa */
+.nav__toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 11px;
+    color: var(--color-ink);
+    background: none;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.nav__toggle:hover {
+    background-color: var(--color-mint);
+}
+
+.nav__bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* Hamburguesa -> X (primero se desplaza, luego se gira) */
+.nav.is-open .nav__bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav.is-open .nav__bar:nth-child(2) { opacity: 0; }
+.nav.is-open .nav__bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Menú desplegable (móvil) */
+.nav__list {
+    position: absolute;
+    top: 100%;          /* justo debajo del header */
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0 var(--container-gutter);
+    list-style: none;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-line);
+    box-shadow: var(--shadow);
+
+    /* Cerrado */
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height var(--transition-fast), visibility 0s linear 0.2s;
+}
+
+.nav.is-open .nav__list {
+    max-height: 24rem;
+    padding-block: var(--space-2);
+    visibility: visible;
+    transition: max-height var(--transition-fast), visibility 0s;
+}
+
+.nav__list li + li {
+    border-top: 1px solid var(--color-line);
+}
+
+.nav__link {
+    display: block;
+    padding: var(--space-4) var(--space-3);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-ink);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.nav__link:hover {
+    color: var(--color-brand-deep);
+    background-color: var(--color-mint);
+}
+
+/* Página actual: <a aria-current="page"> */
+.nav__link[aria-current="page"] {
+    color: var(--color-brand-deep);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Foco visible con teclado */
+.nav__link:focus-visible,
+.nav__toggle:focus-visible,
+.title-group:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+}
+
+/*Diseño para Tablets, portátiles y sobremesa*/
+
+@media (min-width: 768px) {
+    .container-header-inner {
+        gap: var(--space-5);
+        padding-inline: var(--space-5);
+    }
+
+    .logo {
+        width: 52px;
+        height: 52px;
+    }
+
+    .subtext {
+        font-size: var(--font-size-xs);
+    }
+
+    .nav__toggle {
+        display: none;
+    }
+
+    .nav__list,
+    .nav.is-open .nav__list {
+        position: static;
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+        max-height: none;
+        padding: 0;
+        overflow: visible;
+        visibility: visible;
+        background: none;
+        border: none;
+        box-shadow: none;
+        transition: none;
+    }
+
+    .nav__list li + li {
+        border-top: none;
+    }
+
+    .nav__link {
+        position: relative;
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--font-size-sm);
+    }
+
+    .nav__link:hover {
+        background: none;
+    }
+
+    /* Subrayado animado */
+    .nav__link::after {
+        content: "";
+        position: absolute;
+        left: var(--space-3);
+        right: var(--space-3);
+        bottom: 2px;
+        height: 2px;
+        background-color: var(--color-brand);
+        border-radius: 2px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform var(--transition-fast);
+    }
+
+    .nav__link:hover::after,
+    .nav__link:focus-visible::after,
+    .nav__link[aria-current="page"]::after {
+        transform: scaleX(1);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container-header-inner {
+        gap: var(--space-6);
+        padding-inline: var(--space-6);
+    }
+
+    .logo {
+        width: 56px;
+        height: 56px;
+    }
+
+    .nav__list {
+        gap: var(--space-2);
+    }
+}
+
+/*Accesibilidad. Se reduce el movimiento*/
+
+@media (prefers-reduced-motion: reduce) {
+    .nav__list,
+    .nav.is-open .nav__list {
+        transition: none;
+    }
+}

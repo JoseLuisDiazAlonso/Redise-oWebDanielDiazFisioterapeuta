@@ -51,7 +51,7 @@
 
     --shadow-sm: 0 4px 12px rgba(10, 79, 73, 0.06); /*Boton en Hover*/
     --shadow: 0 10px 30px rgba(10, 79, 73, .08); /*Tarjetas en reposo*/
-    --shadow-hover: 0 18px 40px rgba(10, 79, 73, .14) /*Tarjetas al pasar el raton y tarjetas flotantes*/
+    --shadow-hover: 0 18px 40px rgba(10, 79, 73, .14); /*Tarjetas al pasar el raton y tarjetas flotantes*/
 
     /*Tipologia*/
 
@@ -63,7 +63,7 @@
     --font-size-lead: 1.0625rem; /*17px-subtitulos de seccion*/
     --font-size-h3: 1.125rem; /*Titulos de tarjetas*/
     --font-size-h2: clamp(1.75rem, 3.4vw, 2.5rem); /*28px-40px: titulos de seccion*/
-    --font-size-h1: clamp(2.25rem, 5vw, 3.5rem); /*36px-56px-titular de portada*/
+    --font-size-h1: clamp(1rem, 4.5vw, 1.5rem); /*36px-56px-titular de portada*/
 
     /*Pesos*/
 
@@ -88,7 +88,7 @@
     --space-1: 0.25rem; /*4px*/
     --space-2: 0.5rem; /*8px*/
     --space-3: 0.75rem; /*12px*/
-    --sapace-4: 1rem; /*16px*/
+    --space-4: 1rem; /*16px*/
     --space-5: 1.5rem; /*24px*/
     --space-6: 2rem; /*32px*/
     --space-7: 3rem; /*48px*/
@@ -112,8 +112,9 @@
     --z-header: 100;
     --z-whatsapp: 90;
     --z-cookies: 200;
+}
 
-    /*Ajustes para pantallas pequeñas*/
+/*Ajustes para pantallas pequeñas*/
     
     @media (max-width: 960px) {
         :root {
@@ -129,6 +130,3 @@
             --transition-slow: 0s;
         }
     }
-
-
-}
