@@ -1,5 +1,4 @@
 /*Base*/
-
 *,
 *::before,
 *::after {
@@ -13,6 +12,11 @@ body {
     line-height: var(--line-height-base);
     color: var(--color-ink);
     margin: 0;
+}
+
+/* Que el header fijo no tape el principio de las secciones al usar los enlaces del menú */
+html {
+    scroll-padding-top: calc(var(--header-height) + var(--space-4));
 }
 
 /*Header móvil*/
@@ -30,8 +34,10 @@ body {
 
 .container-header-inner {
     display: flex;
+    flex-wrap: wrap; /*Permite bajar el contenido a otra fila*/
     align-items: center;
-    gap: var(--space-3);
+    column-gap: var(--space-3);
+    row-gap: 0;
     min-height: var(--header-height);
     max-width: var(--container-max);
     margin-inline: auto;
@@ -44,7 +50,7 @@ body {
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    flex: 1;            /* ocupa el espacio libre y empuja el menú a la derecha */
+    flex: 1;            /* ocupa el espacio libre y empuja el botón a la derecha */
     min-width: 0;       /* permite recortar el texto si no cabe */
     color: inherit;
     text-decoration: none;
@@ -92,7 +98,7 @@ body {
 
 /* ---------- Navegación ---------- */
 
-/* Botón hamburguesa */
+/* Botón hamburguesa (ahora fuera del <nav>) */
 .nav__toggle {
     display: flex;
     flex-direction: column;
@@ -122,23 +128,21 @@ body {
     transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
-/* Hamburguesa -> X (primero se desplaza, luego se gira) */
-.nav.is-open .nav__bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav.is-open .nav__bar:nth-child(2) { opacity: 0; }
-.nav.is-open .nav__bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* Hamburguesa -> X: depende del estado del propio botón */
+.nav__toggle[aria-expanded="true"] .nav__bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__toggle[aria-expanded="true"] .nav__bar:nth-child(2) { opacity: 0; }
+.nav__toggle[aria-expanded="true"] .nav__bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Menú desplegable (móvil) */
+/* El nav ocupa toda una fila, así que baja debajo del logo */
+.nav {
+    flex-basis: 100%;
+}
+
+/* Menú desplegable (móvil): dentro del flujo, empuja el contenido */
 .nav__list {
-    position: absolute;
-    top: 100%;          /* justo debajo del header */
-    left: 0;
-    right: 0;
     margin: 0;
-    padding: 0 var(--container-gutter);
+    padding: 0;
     list-style: none;
-    background-color: var(--color-white);
-    border-bottom: 1px solid var(--color-line);
-    box-shadow: var(--shadow);
 
     /* Cerrado */
     max-height: 0;
@@ -188,100 +192,172 @@ body {
     outline-offset: 2px;
 }
 
-/*Diseño para Tablets, portátiles y sobremesa*/
+/* ========== PÁGINA PRINCIPAL ========== */
 
-@media (min-width: 768px) {
-    .container-header-inner {
-        gap: var(--space-5);
-        padding-inline: var(--space-5);
-    }
-
-    .logo {
-        width: 52px;
-        height: 52px;
-    }
-
-    .subtext {
-        font-size: var(--font-size-xs);
-    }
-
-    .nav__toggle {
-        display: none;
-    }
-
-    .nav__list,
-    .nav.is-open .nav__list {
-        position: static;
-        display: flex;
-        align-items: center;
-        gap: var(--space-1);
-        max-height: none;
-        padding: 0;
-        overflow: visible;
-        visibility: visible;
-        background: none;
-        border: none;
-        box-shadow: none;
-        transition: none;
-    }
-
-    .nav__list li + li {
-        border-top: none;
-    }
-
-    .nav__link {
-        position: relative;
-        padding: var(--space-2) var(--space-3);
-        font-size: var(--font-size-sm);
-    }
-
-    .nav__link:hover {
-        background: none;
-    }
-
-    /* Subrayado animado */
-    .nav__link::after {
-        content: "";
-        position: absolute;
-        left: var(--space-3);
-        right: var(--space-3);
-        bottom: 2px;
-        height: 2px;
-        background-color: var(--color-brand);
-        border-radius: 2px;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform var(--transition-fast);
-    }
-
-    .nav__link:hover::after,
-    .nav__link:focus-visible::after,
-    .nav__link[aria-current="page"]::after {
-        transform: scaleX(1);
-    }
+.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);            /* separación entre imagen, texto, botones y tarjetas */
+    padding: var(--space-7) var(--container-gutter);
+    text-align: center;
+    background: var(--color-mint);
+    border-radius: 20px;
 }
 
-@media (min-width: 1024px) {
-    .container-header-inner {
-        gap: var(--space-6);
-        padding-inline: var(--space-6);
-    }
-
-    .logo {
-        width: 56px;
-        height: 56px;
-    }
-
-    .nav__list {
-        gap: var(--space-2);
-    }
+.foto-wraper img {
+    display: block;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
 }
 
-/*Accesibilidad. Se reduce el movimiento*/
+/* ---------- Textos ---------- */
 
-@media (prefers-reduced-motion: reduce) {
-    .nav__list,
-    .nav.is-open .nav__list {
-        transition: none;
-    }
+.antetitulo {
+    margin: 0 0 var(--space-3);
+    font-size: var(--font-size-eyebrow);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    color: var(--color-brand-deep);
 }
+
+.texto-principal {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-extrabold);
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-ink);
+}
+
+.texto-subPrincipal {
+    display: block;                 /* empieza en línea nueva */
+    color: var(--color-brand-deep);
+}
+
+.main-page-text {
+    max-width: 40ch;                /* unos 40 caracteres por línea: se lee mejor */
+    margin: var(--space-4) auto 0;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--color-muted);
+}
+
+/* ---------- Botones ---------- */
+
+.botones-container {
+    display: flex;
+    flex-direction: column;         /* móvil: uno debajo del otro */
+    gap: var(--space-3);
+    width: 100%;
+    max-width: 22rem;
+}
+
+/* Estilos comunes a los dos botones */
+.btn {
+    display: inline-flex;
+    align-items: center;            /* centra icono y texto en vertical */
+    justify-content: center;        /* centra el contenido en horizontal */
+    gap: var(--space-2);            /* espacio entre icono y texto */
+    padding: 14px 24px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-btn);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast),
+                background-color var(--transition-fast),
+                box-shadow var(--transition-fast);
+}
+
+.btn__icon {
+    width: 1.25em;
+    height: 1.25em;
+    flex-shrink: 0;                 /* que el icono no se encoja si falta espacio */
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+}
+
+/* Lo que cambia en cada botón */
+.pedirCita {
+    background-color: var(--color-brand-deep);
+    color: var(--color-white);
+}
+
+.pedirCita:hover {
+    background-color: var(--color-night);
+}
+
+.botonWhatsApp {
+    background-color: var(--color-white);
+    color: var(--color-brand-deep);
+    border: 1px solid var(--color-line);
+}
+
+/* ---------- Tarjetas ---------- */
+
+.cards {
+    display: grid;
+    gap: var(--space-4);
+    width: 100%;
+    max-width: 40rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;               /* quita los puntos de la lista */
+}
+
+.card {
+    display: grid;
+    grid-template-columns: auto 1fr;   /* col. 1: icono (su tamaño) | col. 2: el resto */
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+    align-items: start;
+    padding: var(--space-5);
+    text-align: left;
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.card__icon {
+    grid-column: 1;                 /* siempre en la primera columna */
+    grid-row: 1 / 3;                /* ocupa la fila del título y la del texto */
+    width: 44px;
+    height: 44px;
+    padding: 10px;                  /* 44 - 10 - 10 = icono de 24px dentro de un cuadrado */
+    background-color: var(--color-mint);
+    border-radius: var(--radius-sm);
+}
+
+.card__title,
+.card__text {
+    grid-column: 2;                 /* título y texto siempre en la segunda columna */
+}
+
+.card__title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-tight);
+    color: var(--color-ink);
+}
+
+.card__text {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    color: var(--color-muted);
+}
+
