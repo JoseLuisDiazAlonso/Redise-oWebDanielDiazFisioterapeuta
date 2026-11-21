@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow">
-    <meta name="description" content="Fisioterapia y osteopatía en Alcorcón, Madrid. Tratamiento de dolor cervical, lumbalgia, ciática, migrañas y alteraciones digestivas. Daniel Díaz, colegiado nº 8214. Pide tu cita online.">
-    <link rel="canonical" href="https://www.danieldiazfisioterapeuta.es">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description"
+    content="Fisioterapia y osteopatía en Alcorcón, Madrid. Tratamiento de dolor cervical, lumbalgia, ciática, migrañas y alteraciones digestivas. Daniel Díaz, colegiado nº 8214. Pide tu cita online.">
+  <link rel="canonical" href="https://www.danieldiazfisioterapeuta.es">
 
-    <!--Open Graph-->
-    <meta property="og:title" content="Fisioterapia y Osteopatía en Alcorcón, Madrid | Daniel Díaz">
-    <meta property="og:description" content="Tratamiento de dolor cervical, lumbalgia, ciática, migrañas y alteraciones digestivas. Daniel Díaz, colegiado nº 8214. Pide tu cita online.">
-    <meta property="og:image" content="https://www.danieldiazfisioterapeuta.es/media/logo.png">
-    <meta property="og:type" content="business.business">
-    <meta property="og:url" content="https://www.danieldiazfisioterapeuta.es">
-    <meta property="og:locale" content="es_ES">
+  <!--Open Graph-->
+  <meta property="og:title" content="Fisioterapia y Osteopatía en Alcorcón, Madrid | Daniel Díaz">
+  <meta property="og:description"
+    content="Tratamiento de dolor cervical, lumbalgia, ciática, migrañas y alteraciones digestivas. Daniel Díaz, colegiado nº 8214. Pide tu cita online.">
+  <meta property="og:image" content="https://www.danieldiazfisioterapeuta.es/media/logo.png">
+  <meta property="og:type" content="business.business">
+  <meta property="og:url" content="https://www.danieldiazfisioterapeuta.es">
+  <meta property="og:locale" content="es_ES">
 
-    <!--Preconnect a CDNs externos-->
-    <link rel="icon" type="image/png" sizes="42x42" href="./media/logo.png">
-    <link rel="stylesheet" href="./css/tokens.css">
-    <link rel="stylesheet" href="./css/index.css">
-    <title>Fisioterapia y Osteopatía en Alcorcón, Madrid | Daniel Díaz</title>
+  <!--Preconnect a CDNs externos-->
+  <link rel="icon" type="image/png" sizes="42x42" href="./media/logo.png">
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>Fisioterapia y Osteopatía en Alcorcón, Madrid | Daniel Díaz</title>
 
-    <!--Datos estructurados-->
-    
-    <script type="application/ld+json">
+  <!--Datos estructurados-->
+
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "PhysicalTherapy",
@@ -45,6 +48,7 @@
     }
 </script>
 </head>
+
 <body>
   <!--Header de la página-->
   <header class="site-header">
@@ -54,27 +58,83 @@
         <img src="./media/logo.png" alt="Logo de Daniel Díaz Fisioterapeuta y Osteópata" class="logo">
         <div class="title-subgroup">
           <h1 class="title">FISIOTERAPIA DANIEL DIAZ</h1>
-         <p class="subtext">Fisioterapia y osteopatía</p>
+          <p class="subtext">Fisioterapia y osteopatía</p>
         </div>
-      </div> 
+      </div>
+      <button class="nav__toggle" type="button" aria-controls="nav-menu" aria-expanded="false" aria-label="Abrir menú">
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+      </button>
       <!--Navegación principal-->
-    <nav class="nav" aria-label="Navegación Principal">
-      <button class="nav__toggle" type="button"
-      aria-controls="nav-menu" aria-expanded="false" aria-label="Abrir menú">
-      <span class="nav__bar"></span>
-      <span class="nav__bar"></span>
-      <span class="nav__bar"></span>
-     </button>
-
-     <ul id="nav-menu" class="nav__list">
-      <li><a href="#Sobre-mi" class="nav__link">Sobre mí</a></li>
-      <li><a href="#tratamientos" class="nav__link">Tratamientos</a></li>
-      <li><a href="#preguntas" class="nav__link">Preguntas</a></li>
-      <li><a href="#contacto" class="nav__link nav--link--cta">Contacto</a></li>
-     </ul>
-    </nav>
+      <nav class="nav" aria-label="Navegación Principal">
+        <ul id="nav-menu" class="nav__list">
+          <li><a href="#Sobre-mi" class="nav__link">Sobre mí</a></li>
+          <li><a href="#tratamientos" class="nav__link">Tratamientos</a></li>
+          <li><a href="#preguntas" class="nav__link">Preguntas</a></li>
+          <li><a href="#contacto" class="nav__link nav--link--cta">Contacto</a></li>
+        </ul>
+      </nav>
     </div>
-  </header> 
+  </header>
+  <main>
+    <!--Página Principal-->
+    <section class="main-page">
+      <!--Imágen del logo corporativo-->
+      <div class="foto-wraper">
+        <img src="./media/logo.png" alt="Imágen del logo Corporativo">
+      </div>
+      <!--Texto principal-->
+      <div class="main-page-content">
+        <p class="tercer-titulo">Fisioterapia y Osteopatía en Alcorcón</p>
+        <h2 class="texto-principal">No trato síntomas, <span class="texto-subPrincipal">trato personas</span></h2>
+        <p class="main-page-text">Tratamiento de dolor de espalda, cervicales, migrañas y
+          molestias digestivas con una visión global del cuerpo.
+          Buscamos el origen para que el alivio dure.
+        </p>
+      </div>
+      <!--Botones-->
+      <!-- Botones -->
+      <div class="botones-container">
+        <a href="https://calendar.app.google/JFKUPVoDzNPNGmWM6" class="btn pedirCita" target="_blank"
+          rel="noopener noreferrer">
+          <svg class="btn__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="currentColor">
+            <!-- aquí va tu <path> del calendario, sin cambios -->
+          </svg>
+          Reserva tu cita
+        </a>
+
+        <a href="https://wa.me/34640302917" class="btn botonWhatsApp" target="_blank" rel="noopener noreferrer">
+          <svg class="btn__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- aquí van tus 3 <path> de WhatsApp, sin cambios -->
+          </svg>
+          Escríbeme por WhatsApp
+        </a>
+      </div>
+      </div>
+      <!--Tarjetas-->
+      <ul class="cards">
+        <li class="card">
+          <img class="card__icon" src="./media/iconos/eye.svg" alt="Icono de ojo" width="24" height="24">
+          <h2 class="card__title">Visión Global</h2>
+          <p class="card__text">Cada sistema del cuerpo se relaciona. Tratamos el origen, no el síntoma.</p>
+        </li>
+        <li class="card">
+          <img class="card__icon" src="./media/iconos/heart.svg" alt="Icono de corazón" width="24" height="24">
+          <h2 class="card__title">Trato Cercano</h2>
+          <p class="card__text">Escuchar es parte de la terapia, Sesiones personalizadas y sin prisas</p>
+        </li>
+        <li class="card">
+          <img class="card__icon" src="./media/iconos/academic.svg" alt="Icono de birrete" width="24" height="24">
+          <h2 class="card__title">Formación continua</h2>
+          <p class="card__text">Fisioterapia avanzada y osteopatía para abordar cada caso con rigor.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
   <script src="./js/index.js"></script>
 </body>
+
 </html>
